@@ -9,52 +9,64 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="item input">
-            <form name="form"><input type="text" name="textview" readonly></form>
-        </div>
-        <div class="item clean" onclick="clean()">С</div>
-        <div class="item back" onclick="back()">&larr;</div>
-        <div class="item" onclick="insert('+')">+</div>
-        <div class="item" onclick="insert('-')">-</div>
-        <div class="item" onclick="insert('*')">&times;</div>
-        <div class="item" onclick="insert('/')">&divide;</div>
-        <div class="item" onclick="insert('7')">7</div>
-        <div class="item" onclick="insert('8')">8</div>
-        <div class="item" onclick="insert('9')">9</div>
-        <div class="item" onclick="insert('(')">(</div>
-        <div class="item" onclick="insert('4')">4</div>
-        <div class="item" onclick="insert('5')">5</div>
-        <div class="item" onclick="insert('6')">6</div>
-        <div class="item" onclick="insert(')')">)</div>
-        <div class="item" onclick="insert('1')">1</div>
-        <div class="item" onclick="insert('2')">2</div>
-        <div class="item" onclick="insert('3')">3</div>
-        <div class="item equal" onclick="equal()">=</div>
-        <div class="item zero" onclick="insert('0')">0</div>
-        <div class="item" onclick="insert('.')">.</div>
+    <div class="calculator">
+        <!-- Пока поставил ноль в окне дива -->
+        <div class="calculator_button input">0</div>
+
+        <!-- Кнопка "deg" относится к режиму измерения угла в градусах. Если она активирована, то углы, используемые для вычисления тригонометрических функций (sin, cos, tan, ctg), будут представлены в градусах. -->
+        <div class="calculator_button type">deg</div>
+        <!-- Функция "sin" вычисляет синус угла. -->
+        <div class="calculator_button" onclick="f('sin')">sin</div>
+        <!--  Функция "cos" вычисляет косинус угла. -->
+        <div class="calculator_button" onclick="f('cos')">cos</div>
+        <!-- Функция "tan" вычисляет тангенс угла. -->
+        <div class="calculator_button" onclick="f('tan')">tan</div>
+        <!-- Функция "ctg" вычисляет котангенс угла. -->
+        <div class="calculator_button" onclick="f('ctg')">ctg</div>
+        <!-- Функция "x в степени y" вычисляет число x, возведенное в степень y. -->
+        <div class="calculator_button" onclick="operation('^')">x<span class="upper">y</span></div>
+        <!-- Функция "lg" вычисляет десятичный логарифм числа. -->
+        <div class="calculator_button" onclick="log('lg')">lg</div>
+        <!-- Функция "ln" вычисляет натуральный логарифм числа. -->
+        <div class="calculator_button" onclick="log('ln')">ln</div>
+        <div class="calculator_button" onclick="insert('(')">(</div>
+        <div class="calculator_button" onclick="insert(')')">)</div>
+
+        <div class="calculator_button" onclick="operation('sqr')">x<span class="upper">2</span></div>
+        <div class="calculator_button clean" onclick="clean()">C</div>
+        <div class="calculator_button back" onclick="back()">&lArr;</div>
+        <div class="calculator_button percent" onclick="percent()">%</div>
+        <div class="calculator_button divide" onclick="insert('/')">&divide;</div>
+
+        <!-- Функция "x в степени -1" вычисляет обратное значение числа x, т.е. 1/x -->
+        <div class="calculator_button" onclick="operation('^-1')">x<span class="upper">-1</span></div>
+        <div class="calculator_button" onclick="insert('7')">7</div>
+        <div class="calculator_button" onclick="insert('8')">8</div>
+        <div class="calculator_button" onclick="insert('9')">9</div>
+        <div class="calculator_button mul" onclick="insert('*')">&times;</div>
+
+        <div class="calculator_button" onclick="operation('sqrt')">&radic;x</div>
+        <div class="calculator_button" onclick="insert('4')">4</div>
+        <div class="calculator_button" onclick="insert('5')">5</div>
+        <div class="calculator_button" onclick="insert('6')">6</div>
+        <div class="calculator_button sub" onclick="insert('-')">-</div>
+
+        <!-- Функция "x!" вычисляет факториал числа x. -->
+        <div class="calculator_button" onclick="fact()">x!</div>
+        <div class="calculator_button" onclick="insert('1')">1</div>
+        <div class="calculator_button" onclick="insert('2')">2</div>
+        <div class="calculator_button" onclick="insert('3')">3</div>
+        <div class="calculator_button add" onclick="insert('+')">+</div>
+
+        <!-- Число Пи -->
+        <div class="calculator_button" onclick="constant('pi')">&prod;</div>
+        <div class="calculator_button" onclick="constant('e')">e</div>
+        <div class="calculator_button zero" onclick="insert('0')">0</div>
+        <div class="calculator_button" onclick="insert('.')">,</div>
+        <div class="calculator_button equal" onclick="equal()">=</div>
     </div>
-    <script>
 
-        function insert(num) {
-            document.form.textview.value = document.form.textview.value + num;
-        }
-
-        function clean() {
-            document.form.textview.value = "";
-        }
-
-        function back() {
-            var exp = document.form.textview.value;
-            document.form.textview.value = exp.substring(0, exp.length - 1)
-        }
-
-        function equal() {
-            var exp = document.form.textview.value;
-            if (exp) {
-                document.form.textview.value = eval(exp)
-            }
-        }
+    <script src="JS/main.js">
     </script>
 </body>
 
